@@ -1,4 +1,4 @@
-public class RentDetailsForIndividuals implements IRentDetails {
+public class RentForIndividuals implements IRentDetails {
     public float calculateMonthlyPayment(float risk, float price, int contractDuration) {
         return (float) ((price * (1.03 + 0.01 * risk) + 30) / contractDuration);
     }

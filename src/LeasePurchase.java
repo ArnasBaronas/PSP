@@ -18,10 +18,10 @@ public class LeasePurchase {
         this.contractDuration = duration;
         this.clientCreditScore = clientCreditScore;
         if(businessClient) {
-            this.rentDetails = new RentDetailsForBusiness();
+            this.rentDetails = new RentForBusiness();
         }
         else {
-            this.rentDetails = new RentDetailsForIndividuals();
+            this.rentDetails = new RentForIndividuals();
         }
         if(client.equals("Local")) {
             this.purchaseDetails = new LocalClient();
