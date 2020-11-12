@@ -1,9 +1,9 @@
 import java.util.Date;
 
-public class PurchaseLocalsClient extends Purchase {
+public class LeasePurchaseLocalClient extends LeasePurchase {
 
-    public PurchaseLocalsClient(String name, Product product, Date date, String client){
-        super(name, product, date, client);
+    public LeasePurchaseLocalClient(int number, Product product, Date date, String client, int duration, int clientCreditScore){
+        super(number, product, date, client, duration, clientCreditScore);
     }
 
     @Override
