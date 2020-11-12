@@ -1,4 +1,11 @@
-public class LocalClient implements IPurchaseDetails {
+import java.util.Date;
+
+public class PurchaseLocalsClient extends Purchase {
+
+    public PurchaseLocalsClient(String name, Product product, Date date, String client){
+        super(name, product, date, client);
+    }
+
     @Override
     public float calculatePrice(Product product) {
         float price;

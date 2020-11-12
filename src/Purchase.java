@@ -1,10 +1,9 @@
 import java.util.Date;
 
-public class Purchase {
+public abstract class Purchase {
     private String name;
     private Product product;
     private Date orderDate;
-    private IPurchaseDetails purchaseDetails;
     private String client;
 
     public Purchase(String name, Product product, Date date, String client){
@@ -12,16 +11,6 @@ public class Purchase {
         this.product = product;
         this.orderDate = date;
         this.client = client;
-        if(client.equals("Local")) {
-            this.purchaseDetails = new LocalClient();
-        }
-        else if (client.equals("European")) {
-            this.purchaseDetails = new EuropeClient();
-        }
-        else {
-            this.purchaseDetails = new RestWorldClient();
-        }
-        this.purchaseDetails = purchaseDetails;
     }
 
     public Date getOrderDate() {
@@ -37,18 +26,22 @@ public class Purchase {
     }
 
     public float getPrice() {
-        return purchaseDetails.calculatePrice(this.product);
+        return calculatePrice(this.product);
     }
 
     public int getShippingDuration() {
-        return purchaseDetails.calculateShippingDuration(this.product);
+        return calculateShippingDuration(this.product);
     }
 
     public float getProfitMargin() {
-        return purchaseDetails.calculateProfitMargin(this.product);
+        return calculateProfitMargin(this.product);
     }
 
     public String getClient() {
         return client;
     }
+
+    public abstract float calculatePrice(Product product);
+    public abstract int calculateShippingDuration(Product product);
+    public abstract float calculateProfitMargin(Product product);
 }

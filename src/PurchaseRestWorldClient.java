@@ -1,4 +1,11 @@
-public class RestWorldClient implements IPurchaseDetails {
+import java.util.Date;
+
+public class PurchaseRestWorldClient extends Purchase {
+
+    public PurchaseRestWorldClient(String name, Product product, Date date, String client){
+        super(name, product, date, client);
+    }
+
     @Override
     public float calculatePrice(Product product) {
         float price;

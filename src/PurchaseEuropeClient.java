@@ -1,4 +1,11 @@
-public class EuropeClient implements IPurchaseDetails {
+import java.util.Date;
+
+public class PurchaseEuropeClient extends Purchase {
+
+    public PurchaseEuropeClient(String name, Product product, Date date, String client){
+        super(name, product, date, client);
+    }
+
     @Override
     public float calculatePrice(Product product) {
         float price;
