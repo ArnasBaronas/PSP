@@ -26,7 +26,7 @@ public class Main {
         System.out.println("Order " + thirdPurchase.getName() + " profit margin - " + thirdPurchase.getProfitMargin() + " Eur");
         System.out.println("___________________________________________");
 
-        LeasePurchase fourthPurchase = new LeasePurchase(1, exampleProduct, Calendar.getInstance().getTime(), "Local", 6, 669);
+        LeasePurchase fourthPurchase = new LeasePurchase(1, exampleProduct, Calendar.getInstance().getTime(), "Local", 6, 669, true);
         System.out.println(fourthPurchase.getClient() + " origin order " + fourthPurchase.getNumber() + " was entered");
         System.out.println("Order " + fourthPurchase.getNumber() + " price - " + fourthPurchase.getPrice() + "Eur");
         System.out.println("Order " + fourthPurchase.getNumber() + " shipping duration - " + fourthPurchase.getShippingDuration() + " days");
@@ -35,6 +35,16 @@ public class Main {
         System.out.println("Order " + fourthPurchase.getNumber() + " not paying risk - " + fourthPurchase.getRisk() + " %");
         System.out.println("Order " + fourthPurchase.getNumber() + " overdue term - " + fourthPurchase.getOverdueTerm() + " days");
         System.out.println("___________________________________________");
-        
+
+        LeasePurchase fifthPurchase = new LeasePurchase(1, exampleProduct, Calendar.getInstance().getTime(), "Local", 6, 669, false);
+        System.out.println(fifthPurchase.getClient() + " origin order " + fifthPurchase.getNumber() + " was entered");
+        System.out.println("Order " + fifthPurchase.getNumber() + " price - " + fifthPurchase.getPrice() + "Eur");
+        System.out.println("Order " + fifthPurchase.getNumber() + " shipping duration - " + fifthPurchase.getShippingDuration() + " days");
+        System.out.println("Order " + fifthPurchase.getNumber() + " profit margin - " + fifthPurchase.getProfitMargin() + " Eur");
+        System.out.println("Order " + fifthPurchase.getNumber() + " monthly payment - " + fifthPurchase.getMonthlyPayment() + " Eur");
+        System.out.println("Order " + fifthPurchase.getNumber() + " not paying risk - " + fifthPurchase.getRisk() + " %");
+        System.out.println("Order " + fifthPurchase.getNumber() + " overdue term - " + fifthPurchase.getOverdueTerm() + " days");
+        System.out.println("___________________________________________");
+
     }
 }

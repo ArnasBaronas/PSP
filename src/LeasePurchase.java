@@ -5,17 +5,24 @@ public class LeasePurchase {
     private Product product;
     private Date orderDate;
     private IPurchaseDetails purchaseDetails;
+    private IRentDetails rentDetails;
     private String client;
     private int contractDuration;
     private int clientCreditScore;
 
-    public LeasePurchase(int number, Product product, Date date, String client, int duration, int clientCreditScore){
+    public LeasePurchase(int number, Product product, Date date, String client, int duration, int clientCreditScore, boolean businessClient){
         this.number = number;
         this.product = product;
         this.orderDate = date;
         this.client = client;
         this.contractDuration = duration;
         this.clientCreditScore = clientCreditScore;
+        if(businessClient) {
+            this.rentDetails = new RentDetailsForBusiness();
+        }
+        else {
+            this.rentDetails = new RentDetailsForIndividuals();
+        }
         if(client.equals("Local")) {
             this.purchaseDetails = new LocalClient();
         }
@@ -60,19 +67,19 @@ public class LeasePurchase {
         return contractDuration;
     }
 
-    public float getClientCreditScore() {
+    public int getClientCreditScore() {
         return clientCreditScore;
     }
 
     public float getMonthlyPayment() {
-        return (float) ((getPrice() * (1.02 + 0.01 * getRisk()) + 30) / contractDuration);
+        return rentDetails.calculateMonthlyPayment(getRisk(), getPrice(), getContractDuration());
     }
 
     public float getRisk() {
-        return (float) (-0.5 * (Math.log(clientCreditScore * 0.001) / Math.log(1.1)));
+        return rentDetails.calculateRisk(clientCreditScore);
     }
 
     public int getOverdueTerm() {
-        return (int) (10 - getRisk());
+        return rentDetails.calculateOverdueTerm(product, clientCreditScore);
     }
 }
