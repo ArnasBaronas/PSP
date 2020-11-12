@@ -20,6 +20,9 @@ public abstract class LeasePurchase {
     public abstract float getPrice();
     public abstract int getShippingDuration();
     public abstract float getProfitMargin();
+    public abstract float getMonthlyPayment();
+    public abstract float getRisk();
+    public abstract int getOverdueTerm();
 
     public Date getOrderDate() {
         return orderDate;
@@ -43,17 +46,5 @@ public abstract class LeasePurchase {
 
     public float getClientCreditScore() {
         return clientCreditScore;
-    }
-
-    public float getMonthlyPayment() {
-        return (float) ((getPrice() * (1.02 + 0.01 * getRisk()) + 30) / contractDuration);
-    }
-
-    public float getRisk() {
-        return (float) (-0.5 * (Math.log(clientCreditScore * 0.001) / Math.log(1.1)));
-    }
-
-    public int getOverdueTerm() {
-        return (int) (10 - getRisk());
     }
 }
