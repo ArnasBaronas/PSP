@@ -13,6 +13,10 @@ public abstract class Purchase {
         this.client = client;
     }
 
+    public abstract float getPrice();
+    public abstract int getShippingDuration();
+    public abstract float getProfitMargin();
+
     public Date getOrderDate() {
         return orderDate;
     }
@@ -25,23 +29,7 @@ public abstract class Purchase {
         return product;
     }
 
-    public float getPrice() {
-        return calculatePrice(this.product);
-    }
-
-    public int getShippingDuration() {
-        return calculateShippingDuration(this.product);
-    }
-
-    public float getProfitMargin() {
-        return calculateProfitMargin(this.product);
-    }
-
     public String getClient() {
         return client;
     }
-
-    public abstract float calculatePrice(Product product);
-    public abstract int calculateShippingDuration(Product product);
-    public abstract float calculateProfitMargin(Product product);
 }

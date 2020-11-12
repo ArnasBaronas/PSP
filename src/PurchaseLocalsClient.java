@@ -7,19 +7,19 @@ public class PurchaseLocalsClient extends Purchase {
     }
 
     @Override
-    public float calculatePrice(Product product) {
+    public float getPrice() {
         float price;
-        price = (float) (product.getValue() * 1.1 + product.getWeight() * 0.1);
+        price = (float) (getProduct().getValue() * 1.1 + getProduct().getWeight() * 0.1);
         return price;
     }
     @Override
-    public int calculateShippingDuration(Product product) {
+    public int getShippingDuration() {
         return 7;
     }
     @Override
-    public float calculateProfitMargin(Product product) {
-        float profit = calculatePrice(product);
-        profit = profit - product.getValue() - 5;
+    public float getProfitMargin() {
+        float profit = getPrice();
+        profit = profit - getProduct().getValue() - 5;
         return profit;
     }
 }

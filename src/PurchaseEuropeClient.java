@@ -7,21 +7,22 @@ public class PurchaseEuropeClient extends Purchase {
     }
 
     @Override
-    public float calculatePrice(Product product) {
+    public float getPrice() {
         float price;
-        price = (float) (product.getValue() * 1.3 + product.getWeight() * 0.15);
+        price = (float) (super.getProduct().getValue() * 1.3 + super.getProduct().getWeight() * 0.15);
         return price;
     }
     @Override
-    public int calculateShippingDuration(Product product) {
+    public int getShippingDuration() {
+        //super.getProduct()
         int duration;
-        duration = 7 + (int) (product.getWeight() * 0.1);
+        duration = 7 + (int) (super.getProduct().getWeight() * 0.1);
         return duration;
     }
     @Override
-    public float calculateProfitMargin(Product product) {
-        float profit = calculatePrice(product);
-        profit = (float) (profit - product.getValue() - (product.getWeight() * 0.05));
+    public float getProfitMargin() {
+        float profit = getPrice();
+        profit = (float) (profit - super.getProduct().getValue() - (super.getProduct().getWeight() * 0.05));
         return profit;
     }
 }
